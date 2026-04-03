@@ -2,7 +2,7 @@
 
 Proyecto realizado en conjunto con el curso Bootcamp 2026 IA Generativa, LLM Apps, Agentes IA, Cursor AI, impartido por el instructor Julio Colomer.
 
-Este proyecto es un MVP fullstack para subir archivos PDF a la nube y gestionarlos desde una interfaz web. Permite cargar, listar, renombrar, seleccionar, filtrar, abrir y eliminar documentos.
+Este proyecto es un MVP fullstack para subir archivos PDF a la nube y gestionarlos a traves de una API REST y una interfaz web. Permite cargar, listar, renombrar, seleccionar, filtrar, abrir y eliminar documentos.
 
 ## Tecnologias
 
@@ -14,7 +14,11 @@ Este proyecto es un MVP fullstack para subir archivos PDF a la nube y gestionarl
 ## Arquitectura (resumen)
 
 - El frontend consume una API REST y muestra la biblioteca de PDFs.
-- El backend recibe el archivo PDF, lo sube a R2 y guarda metadatos en Postgres (nombre, URL, selected).
+- La API del backend recibe el archivo PDF, lo sube a R2 y guarda metadatos en Postgres (nombre, URL, selected).
+
+## Objetivo del MVP
+
+Este MVP sirve como ejemplo de un patron escalable para manejo de archivos en la nube: los PDFs viven en un almacenamiento compatible con S3 (Cloudflare R2) y la aplicacion los administra via una API REST, guardando solo metadatos en Postgres (Neon).
 
 ## Creditos
 

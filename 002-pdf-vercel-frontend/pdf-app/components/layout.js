@@ -10,7 +10,7 @@ export default function Layout(props) {
               <p className={styles.eyebrow}>MVP documental en la nube</p>
               <h1 className={styles.title}>MVP para Subir PDFs a la Nube</h1>
               <p className={styles.subtitle}>
-                Este MVP permite subir archivos PDF a la nube y gestionarlos desde una sola interfaz.
+                Este MVP permite subir archivos PDF a la nube y gestionarlos a traves de una API REST desde una interfaz web.
                 El flujo principal es cargar, listar, renombrar, seleccionar, filtrar, abrir y eliminar documentos.
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function Layout(props) {
               <div className={styles.flowItem}>
                 <span className={styles.flowLabel}>Lo principal que hace</span>
                 <p className={styles.flowText}>
-                  Sube un PDF, lo guarda en la nube, registra su informacion y lo deja disponible para abrir,
+                  Sube un PDF a traves de la API, lo guarda en la nube, registra su informacion y lo deja disponible para abrir,
                   renombrar, seleccionar, filtrar o eliminar.
                 </p>
               </div>
@@ -110,7 +110,7 @@ export default function Layout(props) {
                 <div className={styles.techRow}>
                   <span className={styles.techName}>FastAPI</span>
                   <p className={styles.techDescription}>
-                    Se usa para recibir archivos, exponer endpoints CRUD y conectar la app con la base de datos y la nube.
+                    Se usa para exponer una API REST, recibir archivos, ofrecer endpoints CRUD y conectar la app con la base de datos y la nube.
                   </p>
                 </div>
                 <div className={styles.techRow}>
