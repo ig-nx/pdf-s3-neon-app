@@ -40,7 +40,7 @@ app.include_router(pdfs.router) # Este es el router para manejar los endpoints r
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://s3-pdf.restak.cl, http://localhost:3000"], # En desarrollo, puedes permitir localhost:3000 para el frontend, pero en producción deberías restringir esto a los dominios específicos que necesiten acceder a tu API. Por ejemplo, si tu frontend está desplegado en Vercel, podrías usar el dominio específico de tu frontend en lugar de *, para mejorar la seguridad.
+    allow_origins=["https://s3-pdf.restak.cl"], # En desarrollo, puedes permitir localhost:3000 para el frontend, pero en producción deberías restringir esto a los dominios específicos que necesiten acceder a tu API. Por ejemplo, si tu frontend está desplegado en Vercel, podrías usar el dominio específico de tu frontend en lugar de *, para mejorar la seguridad.
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -63,7 +63,7 @@ def get_settings():
 def read_root(settings: config.Settings = Depends(get_settings)):
     # print the app_name configuration
     print(settings.app_name)
-    return "Hello PDF World"
+    return "Hola mundo desde FastAPI! Esta es la raíz de la API. Puedes acceder a los endpoints relacionados con los PDFs en /pdfs y a la documentación automática de la API en /docs. ¡Explora y disfruta usando esta API para manejar tus PDFs!"
 
 
 @app.get("/items/{item_id}")

@@ -13,7 +13,7 @@ services:
 
   frontend:
     build:
-      context: ./002-pdf-vercel-frontend/pdf-app
+      context: ./002-pdf-vercel-frontend/pdf-app 
       dockerfile: Dockerfile
       args:
         # Used at build time by Next.js (NEXT_PUBLIC_ variables are inlined).
