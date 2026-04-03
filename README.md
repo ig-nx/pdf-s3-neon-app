@@ -136,7 +136,11 @@ URLs en produccion (ejemplo con subdominios):
 
 - App: https://s3-pdf.restak.cl
 - API: https://api.s3-pdf.restak.cl
-- Swagger: https://api.s3-pdf.restak.cl/docs
+- Swagger (bloqueado por seguridad): https://api.s3-pdf.restak.cl/docs
+
+Nota (seguridad):
+
+- En produccion se recomienda bloquear la documentacion (`/docs`, `/redoc`, `/openapi.json`) y dejar la API en modo solo lectura (bloquear `POST/PUT/DELETE`) si es un MVP publico. Esto se puede aplicar en Nginx.
 
 Endpoints principales (FastAPI):
 
