@@ -40,7 +40,7 @@ app.include_router(pdfs.router) # Este es el router para manejar los endpoints r
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://s3-pdf.restak.cl, http://localhost:3000"], # En desarrollo, puedes permitir localhost:3000 para el frontend, pero en producción deberías restringir esto a los dominios específicos que necesiten acceder a tu API. Por ejemplo, si tu frontend está desplegado en Vercel, podrías usar el dominio específico de tu frontend en lugar de *, para mejorar la seguridad.
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
