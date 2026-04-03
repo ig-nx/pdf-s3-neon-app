@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./001-pdf-fastapi-backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./001-pdf-fastapi-backend/.env
+    restart: unless-stopped
+    ports:
+      # Bind to localhost to avoid clashing with other apps (Nginx will proxy to this).
+      # Esto hace que el backend solo sea accesible desde la máquina local, lo que es una buena práctica de seguridad. Nginx se encargará de enrutar las solicitudes al backend. 8000 es el puerto interno que usa la aplicación FastAPI, y 8001 es el puerto en el host que se usará para acceder a la aplicación.
+      - "127.0.0.1:8001:8000"
+
+  frontend:
+    build:
+      context: ./002-pdf-vercel-frontend/pdf-app
+      dockerfile: Dockerfile
+      args:
+        # Used at build time by Next.js (NEXT_PUBLIC_ variables are inlined).
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://s3-pdf.restak.cl}
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://s3-pdf.restak.cl}
+    depends_on:
+      - backend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3000"
+
