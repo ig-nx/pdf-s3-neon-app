@@ -1,0 +1,63 @@
+.pdfInput {
+    padding: 8px;
+    border: 1px solid #d5dee6;
+    width: auto;
+    flex: 1;
+    height: 42px;
+    margin: 0;
+    border-radius: 999px;
+    background: #ffffff;
+}
+
+.pdfRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 16px 0;
+    border-bottom: 1px solid #dfe7ee;
+}
+
+.pdfCheckbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #234866;
+}
+
+.deleteBtn {
+    background: #f4f7fa;
+    border: 1px solid #dde5ec;
+    border-radius: 12px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.viewPdfLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #eef4f8;
+    border: 1px solid #dde5ec;
+}
+
+.deleteBtn:hover {
+    background: #e9eef3;
+    border-color: #cfd8e1;
+}
+
+@media (max-width: 760px) {
+    .pdfRow {
+        gap: 8px;
+        padding: 14px 0;
+    }
+
+    .pdfInput {
+        min-width: 0;
+    }
+}

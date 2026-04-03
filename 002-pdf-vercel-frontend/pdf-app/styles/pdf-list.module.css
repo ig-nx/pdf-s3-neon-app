@@ -1,0 +1,109 @@
+.container {
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+.uploadForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.uploadInput {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.mainInputContainer {
+  width: 100%;
+  margin: 0 0 22px 0;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #d9e2ea;
+  text-align: center;
+}
+
+.mainInput {
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #cbd5df;
+  margin: 0;
+  display: block;
+  width: min(440px, 100%);
+  min-height: 46px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 22px 0 0 0;
+  margin-top: 10px;
+}
+
+.helperText {
+  margin: 10px 0 0 0;
+  font-size: 13px;
+  color: #6e8193;
+}
+
+
+.loadBtn {
+  background: #234866;
+  color: #f8fbff;
+  border: 1px solid #234866;
+  padding: 11px 18px;
+  border-radius: 999px;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1px solid #cfd8e2;
+  color: #27445f;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.filterActive {
+  background: #234866;
+  color: #ffffff;
+  border-color: #234866;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px 0 10px;
+  color: #56697a;
+}
+
+@media (max-width: 760px) {
+  .uploadForm {
+    align-items: stretch;
+  }
+
+  .mainInput {
+    width: 100%;
+  }
+
+  .loadBtn {
+    width: 100%;
+  }
+
+  .filters {
+    gap: 8px;
+  }
+}

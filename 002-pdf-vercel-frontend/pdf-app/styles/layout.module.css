@@ -1,0 +1,339 @@
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 100%;
+    background:
+        radial-gradient(circle at top right, rgba(99, 170, 255, 0.24), transparent 30%),
+        linear-gradient(135deg, #103452 0%, #174a77 52%, #1d5d93 100%);
+    color: #f4f8fc;
+}
+
+.headerInner {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 34px 0 42px;
+}
+
+.headerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.copy {
+    max-width: 700px;
+}
+
+.eyebrow {
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    color: #bcd4ea;
+}
+
+.title {
+    margin: 0;
+    font-family: "Palatino Linotype", Georgia, serif;
+    font-size: 44px;
+    line-height: 1.04;
+}
+
+.subtitle {
+    margin: 14px 0 0 0;
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #dbe8f4;
+}
+
+.nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.navItem {
+    color: rgba(244, 248, 252, 0.9);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+.infoBubbles {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+}
+
+.infoBubble {
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #eef5fb;
+    font-size: 14px;
+    backdrop-filter: blur(8px);
+}
+
+.main {
+    width: 100%;
+    flex: 1;
+}
+
+.content {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 36px 0 56px;
+}
+
+.contextSection {
+    margin-top: 44px;
+    padding-top: 30px;
+    border-top: 1px solid #d8e0e8;
+}
+
+.contextIntro {
+    max-width: 860px;
+}
+
+.sectionEyebrow {
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 12px;
+    color: #587089;
+}
+
+.sectionTitle {
+    margin: 0;
+    font-family: "Palatino Linotype", Georgia, serif;
+    font-size: 32px;
+    line-height: 1.12;
+    color: #15324b;
+}
+
+.sectionText {
+    margin: 14px 0 0 0;
+    max-width: 780px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #40586e;
+}
+
+.flowGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+}
+
+.flowItem {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #dbe3ea;
+}
+
+.flowLabel {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #2b5a82;
+}
+
+.flowText {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #466076;
+}
+
+.useCasesSection {
+    margin-top: 34px;
+}
+
+.useCasesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 24px;
+    margin-top: 22px;
+}
+
+.useCaseItem {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #dbe3ea;
+}
+
+.useCaseName {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #173752;
+}
+
+.useCaseText {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #496278;
+}
+
+.techSection {
+    margin-top: 34px;
+}
+
+.techHeader {
+    max-width: 760px;
+}
+
+.techTitle {
+    margin: 0;
+    font-family: "Palatino Linotype", Georgia, serif;
+    font-size: 26px;
+    line-height: 1.2;
+    color: #173752;
+}
+
+.techList {
+    margin-top: 22px;
+    border-top: 1px solid #dbe3ea;
+}
+
+.techRow {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid #dbe3ea;
+}
+
+.techName {
+    font-size: 15px;
+    font-weight: 600;
+    color: #173752;
+}
+
+.techDescription {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #496278;
+}
+
+.footer {
+    width: 100%;
+    background: #0e2235;
+    color: #d4deea;
+}
+
+.footerInner {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding: 24px 0 28px;
+}
+
+.footerItem {
+    font-size: 14px;
+    color: rgba(212, 222, 234, 0.92);
+}
+
+@media (max-width: 760px) {
+    .headerInner,
+    .content,
+    .footerInner {
+        width: calc(100% - 24px);
+    }
+
+    .headerInner {
+        padding: 26px 0 30px;
+    }
+
+    .headerTop {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .nav {
+        gap: 14px;
+        justify-content: flex-start;
+        padding-top: 0;
+    }
+
+    .infoBubbles {
+        gap: 10px;
+    }
+
+    .content {
+        padding: 26px 0 40px;
+    }
+
+    .contextSection {
+        margin-top: 34px;
+        padding-top: 24px;
+    }
+
+    .sectionTitle {
+        font-size: 26px;
+    }
+
+    .sectionText {
+        font-size: 15px;
+    }
+
+    .flowGrid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 22px;
+    }
+
+    .techSection {
+        margin-top: 28px;
+    }
+
+    .useCasesSection {
+        margin-top: 28px;
+    }
+
+    .useCasesGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 18px;
+    }
+
+    .techTitle {
+        font-size: 22px;
+    }
+
+    .techRow {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 14px 0;
+    }
+
+    .footerInner {
+        justify-content: center;
+        gap: 16px;
+        padding: 20px 0 24px;
+    }
+}
