@@ -80,6 +80,7 @@ python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 API: `http://localhost:8000`
+Docs (Swagger): `http://localhost:8000/docs`
 
 ### 2) Frontend
 

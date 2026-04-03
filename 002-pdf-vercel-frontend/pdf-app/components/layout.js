@@ -63,7 +63,7 @@ export default function Layout(props) {
             <div className={styles.useCasesSection}>
               <div className={styles.techHeader}>
                 <p className={styles.sectionEyebrow}>Casos de uso</p>
-                <h3 className={styles.techTitle}>Donde puede aplicarse este MVP</h3>
+                <h3 className={styles.techTitle}>Donde puede aplicarse este MVP y su API</h3>
               </div>
 
               <div className={styles.useCasesGrid}>
@@ -89,6 +89,18 @@ export default function Layout(props) {
                   <span className={styles.useCaseName}>Base para flujos con IA</span>
                   <p className={styles.useCaseText}>
                     Como punto de partida para luego resumir, clasificar o extraer informacion de PDFs con IA.
+                  </p>
+                </div>
+                <div className={styles.useCaseItem}>
+                  <span className={styles.useCaseName}>Integracion via API</span>
+                  <p className={styles.useCaseText}>
+                    Para conectar la biblioteca de PDFs con otros sistemas y automatizar flujos usando endpoints REST.
+                  </p>
+                </div>
+                <div className={styles.useCaseItem}>
+                  <span className={styles.useCaseName}>Carga automatizada</span>
+                  <p className={styles.useCaseText}>
+                    Para subir PDFs desde scripts o servicios y mantener metadatos consistentes en la aplicacion.
                   </p>
                 </div>
               </div>

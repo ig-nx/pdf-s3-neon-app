@@ -8,10 +8,24 @@ import { debounce } from 'lodash';
 import PDFComponent from './pdf';
 
 export default function PdfList() {
+  const MAX_PDFS = 5;
+  const MAX_PDF_BYTES = 1 * 1024 * 1024; // 1 MB
+  const LIMIT_MESSAGE = "Ya hay 5 archivos cargados. Elimina uno de la lista de abajo y sube el tuyo.";
+
   const [pdfs, setPdfs] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [filter, setFilter] = useState();
+  const [uploadMessage, setUploadMessage] = useState('');
   const didFetchRef = useRef(false);
+
+  const maxReached = totalCount >= MAX_PDFS;
+
+  useEffect(() => {
+    if (!maxReached && uploadMessage === LIMIT_MESSAGE) {
+      setUploadMessage('');
+    }
+  }, [maxReached, uploadMessage]);
 
   useEffect(() => {
     if (!didFetchRef.current) {
@@ -25,9 +39,23 @@ export default function PdfList() {
     if (selected !== undefined) {
       path = `/pdfs?selected=${selected}`;
     }
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + path);
-    const json = await res.json();
-    setPdfs(json);
+
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const requests = [fetch(baseUrl + path)];
+    if (selected !== undefined) {
+      requests.push(fetch(baseUrl + "/pdfs"));
+    }
+
+    const responses = await Promise.all(requests);
+    const listJson = await responses[0].json();
+    setPdfs(listJson);
+
+    if (responses.length > 1) {
+      const allJson = await responses[1].json();
+      setTotalCount(allJson.length);
+    } else {
+      setTotalCount(listJson.length);
+    }
   }
 
   const debouncedUpdatePdf = useCallback(debounce((pdf, fieldChanged) => {
@@ -92,16 +120,36 @@ you will need to restart the frontend.*/
     if (res.ok) {
       const copy = pdfs.filter((pdf) => pdf.id !== id);
       setPdfs(copy);
+      setTotalCount((count) => Math.max(0, count - 1));
     }
   }
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files?.[0];
+
+    if (!file) {
+      setSelectedFile(null);
+      return;
+    }
+
+    if (file.size > MAX_PDF_BYTES) {
+      setSelectedFile(null);
+      setUploadMessage("Limite MVP: el PDF supera 1 MB. Reduce el tamano e intenta de nuevo.");
+      event.target.value = "";
+      return;
+    }
+
+    setUploadMessage('');
+    setSelectedFile(file);
   };
 
   const handleUpload = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+
+    if (maxReached) {
+      return;
+    }
 
     if (!selectedFile) {
       alert("Selecciona un archivo PDF para cargar.");
@@ -119,10 +167,28 @@ you will need to restart the frontend.*/
     if (response.ok) {
       const newPdf = await response.json();
       setPdfs([...pdfs, newPdf]);
+      setTotalCount((count) => count + 1);
       setSelectedFile(null);
+      setUploadMessage('');
       form.reset();
     } else {
-      alert("No se pudo cargar el archivo, por favor inténtalo de nuevo.");
+      let detail;
+      try {
+        const err = await response.json();
+        detail = err?.detail;
+      } catch (e) {
+        detail = null;
+      }
+
+      if (detail?.code === "LIMIT_REACHED") {
+        setUploadMessage(LIMIT_MESSAGE);
+      } else if (detail?.code === "FILE_TOO_LARGE") {
+        setUploadMessage("Limite MVP: el PDF supera 1 MB. Reduce el tamano e intenta de nuevo.");
+      } else if (detail?.code === "INVALID_TYPE") {
+        setUploadMessage("Solo se permiten archivos PDF.");
+      } else {
+        setUploadMessage("No se pudo cargar el archivo. Intentalo de nuevo.");
+      }
     }
   };
 
@@ -138,9 +204,15 @@ you will need to restart the frontend.*/
       <div className={styles.mainInputContainer}>
         <form onSubmit={handleUpload} className={styles.uploadForm}>
           <input className={styles.mainInput} type="file" accept=".pdf" onChange={handleFileChange} />
-          <button className={styles.loadBtn} type="submit">Cargar PDF</button>
+          <button className={styles.loadBtn} type="submit" disabled={totalCount >= MAX_PDFS}>Cargar PDF</button>
         </form>
-        <p className={styles.helperText}>PDF maximo 100 KB</p>
+        <p className={styles.helperText}>MVP por costos: maximo 5 PDFs (1 MB c/u). Este limite puede aumentar.</p>
+        {maxReached && uploadMessage !== LIMIT_MESSAGE && (
+          <p className={styles.warningText}>{LIMIT_MESSAGE}</p>
+        )}
+        {!!uploadMessage && (
+          <p className={styles.warningText}>{uploadMessage}</p>
+        )}
       </div>
       {!pdfs.length && <div className={styles.loading}>Cargando documentos...</div>}
       {pdfs.map((pdf) => (

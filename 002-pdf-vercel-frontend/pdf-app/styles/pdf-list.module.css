@@ -54,6 +54,17 @@
   color: #6e8193;
 }
 
+.warningText {
+  margin: 8px 0 0 0;
+  font-size: 13px;
+  color: #7a5a20;
+}
+
+.loadBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 
 .loadBtn {
   background: #234866;
